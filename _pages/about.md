@@ -4,7 +4,7 @@ title: About me
 ---
 ## Howon Jeong
 
-![profile](prof.jpeg)
+<img src="../prof.jepg" width="50" height="50"/>
 
 Hello, I am an undergraduate student at the Department of Intelligent Software at Sungkyunkwan University (SKKU).
 
