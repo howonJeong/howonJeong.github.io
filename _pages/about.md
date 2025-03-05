@@ -20,4 +20,9 @@ More...
 - Under developing new logistic systems from Mar, 2025.
 
 ## Contatct me
-email - pcamannsae@gmail.com
+email - howon128@skku.edu
+[github]
+
+
+
+[github] : https://github.com/howonJeong
