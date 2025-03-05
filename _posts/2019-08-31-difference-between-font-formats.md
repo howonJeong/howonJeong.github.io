@@ -1,18 +1,48 @@
 ---
 layout: post
-title: 배가 좀 고프네요
-description: What is the difference between various font formats?
-summary: What is the difference between various font formats?
+title: 에라토스테네스의 채 
+description: 소수들을 대량으로 빠르고 정확하게 구할 때
 comments: true
-tags: [typography]
+tags: [PS]
 ---
 
-Lorem ipsum dolor amet tousled viral art party blue bottle single-origin coffee cardigan, selvage man braid helvetica. Banh mi taxidermy meditation microdosing. Selvage cornhole YOLO, small batch vexillologist raclette VHS prism sustainable 8-bit ugh semiotics letterpress disrupt pop-up. Celiac shabby chic ugh, jianbing whatever kitsch tattooed edison bulb kogi irony etsy.
+사용 : 소수들을 대량으로 빠르고 정확하게 구할 때.
 
-Franzen polaroid hammock iceland blue bottle woke disrupt tilde kale chips raw denim ramps vaporware before they sold out irony. Narwhal vaporware offal shaman celiac kinfolk activated charcoal salvia lomo irony readymade normcore. Yr activated charcoal kombucha, man braid whatever biodiesel hella crucifix adaptogen bicycle rights small batch skateboard mixtape. Hot chicken sustainable green juice 90's. Ennui kickstarter hella pug, meggings man bun shaman messenger bag. Chambray adaptogen kombucha pug affogato, kogi green juice distillery ugh banh mi.
+소수를 판별하는 알고리즘이다. 어떤 수의 소수의 여부를 확인 할 때는, 특정한 숫자의 제곱근 까지만 약수의 여부를 검증하면 O(N^1/2)의 시간 복잡도로 빠르게 구할 수 있다. 수가 수(N이라고 가정)를 나누면 몫이 생기는데, 몫과 나누는 수 둘 중 하나는 N 제곱근 이하이기 때문이다.
 
-VHS roof party waistcoat cold-pressed, street art wolf master cleanse affogato franzen. Shaman iceland pour-over intelligentsia typewriter tilde, pitchfork copper mug. Wayfarers kickstarter adaptogen vinyl beard kombucha. Organic pinterest master cleanse, mixtape fam gentrify lo-fi kogi.
+>> 수 크기를 줄여서 최종적으로 반복문 횟수를 줄이는 방법
 
-Salvia blue bottle fanny pack mlkshk normcore YOLO viral umami four dollar toast skateboard. Chambray taxidermy slow-carb street art chartreuse. Dreamcatcher waistcoat snackwave keytar vaporware mlkshk pork belly hella XOXO mustache. Tattooed semiotics edison bulb, disrupt polaroid craft beer vape enamel pin bespoke flannel letterpress brooklyn subway tile copper mug. Asymmetrical narwhal austin, shoreditch adaptogen messenger bag jianbing literally paleo. Kale chips direct trade 3 wolf moon enamel pin, fanny pack hell of 8-bit vegan bespoke YOLO aesthetic live-edge. Retro succulents before they sold out whatever bushwick.
+유제 : 백준 1016번 제곱수
 
-Actually hella you probably haven't heard of them quinoa try-hard la croix. Street art schlitz actually hell of pour-over air plant. Post-ironic franzen brunch mumblecore readymade. Food truck photo booth polaroid, gochujang vegan street art yr before they sold out man bun. Tilde selfies chia pitchfork everyday carry post-ironic mumblecore sartorial VHS master cleanse activated charcoal biodiesel williamsburg cronut jean shorts. Poutine helvetica keffiyeh butcher pop-up.
+```C++
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    long long min, max;
+    cin >> min >> max;
+
+    vector<bool> isSquareFree(max - min + 1, true);
+
+    for (long long i = 2; i * i <= max; i++) {
+        long long square = i * i;
+        long long start = (min % square == 0) ? min : (min / square + 1) * square;
+
+        for (long long j = start; j <= max; j += square) {
+            isSquareFree[j - min] = false;
+        }
+    }
+
+    int count = 0;
+    for (bool val : isSquareFree) {
+        if (val) count++;
+    }
+
+    cout << count << endl;
+    return 0;
+}
+```
+
+
+소감 : 입력 크기보면 time complexity를 어떻게 관리할 것인지 보는 것 같은데 처음부터 에라토스테네스의 채를 이용한다는 사실을 힌트로 봐버려서 좀 아쉬웠다.
