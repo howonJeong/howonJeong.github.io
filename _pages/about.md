@@ -12,7 +12,7 @@ Hello, I am an undergraduate student at the Department of Intelligent Software a
 
 My research interests lie in machine learning and natural computer Vision.
 - Adverserial Attacks
-- Large Language Models
+- Large Language Models/
 More...
 
 ## Else
