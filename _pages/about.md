@@ -4,7 +4,7 @@ title: About me
 ---
 ### Screenshot
 
-![Screenshot](screenshot.png)
+![Screenshot](prof.jpeg)
 
 Hello, I am an undergraduate student at the Department of Intelligent Software at Sungkyunkwan University (SKKU).
 
