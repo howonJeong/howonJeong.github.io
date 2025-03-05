@@ -8,12 +8,11 @@ title: About me
 
 Hello, I am an undergraduate student at the Department of Intelligent Software at Sungkyunkwan University (SKKU).
 
-### Interested topics
+### Interested Research topics
 
-My research interests lie in machine learning and natural language processing.
-Advesrial Attacks
-Simulating Human Behavior in Text
-Uncovering Insights from Large-Scale Datasets
+My research interests lie in machine learning and natural computer Vision.
+Adverserial Attacks
+Large Language Models
 More...
 
 ### Features
