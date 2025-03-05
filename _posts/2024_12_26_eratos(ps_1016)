@@ -1,0 +1,48 @@
+---
+layout: post
+title: 에라토스테네스의 채 
+description: 소수들을 대량으로 빠르고 정확하게 구할 때
+comments: true
+tags: [PS]
+---
+
+사용 : 소수들을 대량으로 빠르고 정확하게 구할 때.
+
+소수를 판별하는 알고리즘이다. 어떤 수의 소수의 여부를 확인 할 때는, 특정한 숫자의 제곱근 까지만 약수의 여부를 검증하면 O(N^1/2)의 시간 복잡도로 빠르게 구할 수 있다. 수가 수(N이라고 가정)를 나누면 몫이 생기는데, 몫과 나누는 수 둘 중 하나는 N 제곱근 이하이기 때문이다.
+
+>> 수 크기를 줄여서 최종적으로 반복문 횟수를 줄이는 방법
+
+유제 : 백준 1016번 제곱수
+
+```C++
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    long long min, max;
+    cin >> min >> max;
+
+    vector<bool> isSquareFree(max - min + 1, true);
+
+    for (long long i = 2; i * i <= max; i++) {
+        long long square = i * i;
+        long long start = (min % square == 0) ? min : (min / square + 1) * square;
+
+        for (long long j = start; j <= max; j += square) {
+            isSquareFree[j - min] = false;
+        }
+    }
+
+    int count = 0;
+    for (bool val : isSquareFree) {
+        if (val) count++;
+    }
+
+    cout << count << endl;
+    return 0;
+}
+```
+
+
+소감 : 입력 크기보면 time complexity를 어떻게 관리할 것이 관건임을 알것 같았다. 그러나 처음부터 에라토스테네스의 채를 이용한다는 사실을 백준 힌트로 봐버려서 좀 아쉬웠다.
