@@ -1,0 +1,84 @@
+---
+layout: post
+title: 컴퓨터구조개론#1. ISA의 정의
+description: Instruction Set Architecture - 프로그래머 입장에서 컴퓨터를 바라보는 방법에 대한 것
+comments: true
+tags: [Computer Structrue]
+---
+
+#1. ISA – Instruction Set Architecture
+프로그래머 입장에서 컴퓨터를 바라보는 방법에 대한 것
+Program-visible state, Instruction Set
+ 
+C -컴파일러> 어셈블리 언어 프로그램 -어셈블러> 오브젝트 파일 + 라이브러리 오브젝트 파일 -링커> exe -로더> 메모리
+*instruction set architecture
+ 
+밑에서부터 텍스트 영역 – 데이터 영역 – heap (malloc 수행시 위로 메모리 할당) – stack 아래로, 함수 호출 시 스택에 로컬 변수 입력, 이후 해제, rsp가 stack top 포인팅
+ 
+architecture level 
+Ex. 
+Car : driving manual & operation manual
+Computer : ??
++ Microarchitecture Level – 구현에 집중한 디테일
+자동차의 전자적인 부분, 기계적인 부분 -> 엔진의 기통, 어떤 Driving com..
+컴퓨터에서 : 캐시 크기 등등..
++ circuit level
+Gate, wire, semiconductor..
+
+ISA에 들어있는 요소
+-Data format and size : character, binary, negatives..
+-Programmer Visible State (==architectural state) : memory ,reg, pc..
+-instructions : how to change the PVS?
+-Memory usage, instruction to binary encoding… (grow down, grow up)
+ 
+
+General Instruction Classes
+1.	Arithmetic and logical operations
+1.1	operand를 특정 위치에서 들고 옴
+1.2	결과 계산
+1.3	Specified location에 저장
+1.4	Program counter 다음 inst로 변경
+
+2.	Data movement
+2.1	동일
+2.2	Specified location에 저장
+2.3	Pc 업데이트
+
+3.	Control Flow (중요)
+3.1	동일
+3.2	Branch condition 계산
+3.3	target address 이동을 PC로 박거나, 다음 inst PC에 박기
+
+>>atomic : 모든 인스트럭션이 하나씩 진행된다는 의미
+
+ISA 설계 시 생각할 2 요소
+Open-Ended Design
+-Design the current ISA by anticipating(or extrapolating) the future change of technologies and applications.
+1. asynchronous – operation of components
+> abstract out exact time (타이밍에 대한 고려는 하지말기!), performance etc. to allow..
+>> changing tech
+>> relative speed of components
+
+>새로운 명령어 필요할 경우를 고려 – spare bits in instruction encoding (0000100 꽉 채우지 말라고) 필요
+
+General Purpose
+-프로그램 크기, 도메인 상관없이 잘 실행될 것.
+-integer, floating point -> 기본적인 데이터 타입 지원
+-down to small units of bits -> Fine – grain 메모리 접근성
+-알만한 xor, nor 등등 다 지원하기
+
+RISC vs CISC
+CISC : 복잡한 instruction, 길이 다른 경우가 많음
+장 : 짧은 코드 길이, 많은 instruction 선택지
+단 : 하드웨어 & 컴파일러 복잡해짐, clk freq bad, 요구 출력 높음
+e.g. x86 -> desktop, server
+
+RISC : 간단, 길이 동일
+장 : 간단 하드웨어, 컴파일러, freq ^^, 요구 출력 하강
+단 : 코드 길이 ^^
+E.g. ARM, MIPS -> 저전력 모바일 시스템
+
+ISA가 항상 만족해야 하는 Binary compatibility
+	옛날에도 돌아가던 Binary는 지금 컴퓨터에서도 돌아가야 함
+	이전 세대의 ISA를 지원하도록 함.
+	Backward compatibility와 비슷?
