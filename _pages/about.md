@@ -22,5 +22,5 @@ More...
 Under developing new logistic systems from Mar, 2025.
 
 ## Contatct me
-<a href = "howon128@skku.edu"> Email </a>
+# Email - howon128@skku.edu
 <a href = "https://github.com/howonJeong"> GitHub </a>
